@@ -55,7 +55,7 @@ $reports = $mysqli->query($sql);
         <div class="col-md-12">
           <div class="card form-group">
             <div class="card-header"><span class="text-capitalize">weekly report</span><span class="text-capitalize font-italic">&nbsp;list</span>
-              <a class="btn btn-outline-success col-md-2 float-right">Add report</a>
+              <a href="add.php" class="btn btn-outline-success col-md-2 float-right">Add report</a>
             </div>
             <div class="card-body form-group">
               <div class="form-group">
