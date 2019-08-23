@@ -1,6 +1,6 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'emma', 'emmanuel', 'report');
+$mysqli = new mysqli('localhost', 'root', 'easy', 'report');
 $message = '';
 $type = '';
 if ($_POST['action'] == 'add') {
