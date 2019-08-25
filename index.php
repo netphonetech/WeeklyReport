@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli('localhost', 'root', 'easy', 'report');
+require('dbconnection.php');
 $sql = 'SELECT * FROM `reports`';
 $reports = $mysqli->query($sql);
 ?>
@@ -76,13 +76,13 @@ $reports = $mysqli->query($sql);
                     while ($report = $reports->fetch_assoc()) {
                       $sno++;
                       ?>
-                    <tr ondblclick="show(<?php echo ($report['id']) ?>)">
+                    <tr ondblclick="show(<?php echo ($report['id']) ?>)" title="Double click to show whole report">
                       <td><?php echo ($sno) ?></td>
                       <td><?php echo ($report['date_from']) ?></td>
                       <td><?php echo ($report['date_to']) ?></td>
-                      <td><?php echo ($report['subject']) ?></td>
+                      <td><input class="form-control" readonly value="<?php echo ($report['subject']) ?>"></td>
                       <td><?php echo ($report['status']) ?></td>
-                      <td><?php echo ($report['completed_this_week']) ?></td>
+                      <td><input class="form-control" readonly value="<?php echo ($report['completed_this_week']) ?>"></td>
                       <td class="text-center">
                         <!-- <a href="receipt.php?id=<?php echo ($report['id']) ?>" class="btn btn-sm btn-outline-dark" onclick="return confirm('Print this report?')"><i class="fa fa-print"></i></a> -->
                         <a href="edit.php?id=<?php echo ($report['id']) ?>" class="btn btn-sm btn-outline-info" onclick="return confirm('Edit this report?')"><i class="fa fa-edit"></i></a>
