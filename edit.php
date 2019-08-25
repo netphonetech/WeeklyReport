@@ -1,8 +1,8 @@
 <?php
+require('dbconnection.php');
 if (!isset($_GET['id']) && $_GET['id'] != '') {
     return header('location: index.php?message=something went wrong');
 }
-$mysqli = new mysqli('localhost', 'root', 'easy', 'report');
 $report = $mysqli->query("SELECT * FROM reports WHERE id='" . $_GET['id'] . "'")->fetch_assoc();
 ?>
 <!doctype html>

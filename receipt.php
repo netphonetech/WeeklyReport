@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli('localhost', 'root', 'easy', 'report');
+require('dbconnection.php');
 if ($mysqli->connect_error) {
     echo 'The following MYSQL error occured: ' . $mysqli->connect_error;
     return 0;
