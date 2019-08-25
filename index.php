@@ -59,6 +59,11 @@ $reports = $mysqli->query($sql);
             </div>
             <div class="card-body form-group">
               <div class="form-group">
+                <?php if ($reports->num_rows < 1) {
+                  ?>
+                <h4 class="text-center">No report added yet</h4>
+                <?php
+                } else { ?>
                 <table class="table table-striped table-bordered" id="many">
                   <thead>
                     <tr>
@@ -73,9 +78,9 @@ $reports = $mysqli->query($sql);
                   </thead>
                   <tbody>
                     <?php $sno = 0;
-                    while ($report = $reports->fetch_assoc()) {
-                      $sno++;
-                      ?>
+                      while ($report = $reports->fetch_assoc()) {
+                        $sno++;
+                        ?>
                     <tr ondblclick="show(<?php echo ($report['id']) ?>)" title="Double click to show whole report">
                       <td><?php echo ($sno) ?></td>
                       <td><?php echo ($report['date_from']) ?></td>
@@ -91,7 +96,7 @@ $reports = $mysqli->query($sql);
                     </tr>
                     <?php  } ?>
                   </tbody>
-                </table>
+                </table> <?php } ?>
               </div>
             </div>
           </div>
