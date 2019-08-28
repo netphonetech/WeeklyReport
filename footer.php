@@ -1,7 +1,7 @@
 </div>
 </div>
-<footer class="footer fixed-bottom">
-    footer
+<footer class="footer fixed-bottom text-center bg-dark text-white">
+    <a class="text-white" href="netphone.co.tz">Netphone Technologies</a>
 </footer>
 <script>
     function show(report) {
