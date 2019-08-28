@@ -4,7 +4,7 @@ require('dbconnection.php');
 $message = '';
 $type = '';
 if ($_POST['action'] == 'add') {
-    $sql = "INSERT INTO reports(date_from,date_to,subject,period_ending,completed_this_week,activity_in_progress,next_activity,due_date,activity_next_week,status) VALUES('" . $_POST['from'] . "','" . $_POST['to'] . "','" . $_POST['subject'] . "','" . $_POST['ending'] . "','" . $_POST['this_week'] . "','" . $_POST['progress'] . "','" . $_POST['next'] . "','" . $_POST['due'] . "','" . $_POST['next_week'] . "','" . $_POST['status'] . "')";
+    $sql = "INSERT INTO reports(user,date_from,date_to,subject,period_ending,completed_this_week,activity_in_progress,next_activity,due_date,activity_next_week,status) VALUES('" . $user['Id'] . "','" . $_POST['from'] . "','" . $_POST['to'] . "','" . $_POST['subject'] . "','" . $_POST['ending'] . "','" . $_POST['this_week'] . "','" . $_POST['progress'] . "','" . $_POST['next'] . "','" . $_POST['due'] . "','" . $_POST['next_week'] . "','" . $_POST['status'] . "')";
     if ($mysqli->query($sql)) {
         $type = 'success';
         $message = 'Successfull added report';
