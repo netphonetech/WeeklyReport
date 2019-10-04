@@ -6,7 +6,7 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
-$password = sha1($_POST['password']);
+$password = sha1($_POST['email']);
 
 $sql = "INSERT INTO `user`(`fname`, `lname`, `phone_No`, `email`, `password`)VALUES ('" . $fname . "','" . $lname . "','" . $phone . "','" . $email . "','" . $password . "')";
 
