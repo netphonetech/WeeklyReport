@@ -48,7 +48,7 @@ require('header.php');
                 <div class="row form-group">
                     <label class="col-md-4 text-right">Phone No:</label>
                     <div class="col-md-6">
-                        <input type="number" min="0" name="phone" class="form-control" value="<?php echo $user_account['phone_No'] ?>" required>
+                        <input type="text" placeholder="eg. 0785984678" pattern="0[0-9]{9}" name="phone" class="form-control" value="<?php echo $user_account['phone_No'] ?>" required>
                     </div>
                 </div>
                 <div class="row form-group">
