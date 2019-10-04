@@ -41,6 +41,8 @@
                     <a class="dropdown-item" href="viewUsers.php">Users</a>
                     <hr>
                 <?php endif ?>
+                <a class="dropdown-item" href="password_change.php">Change Password</a>
+                <hr>
                 <a class="dropdown-item" href="logout.php">Logout</a>
             </div>
     </header>
