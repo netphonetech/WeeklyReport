@@ -37,7 +37,7 @@ require('header.php');
 									<td><?php echo ($sno) ?></td>
 									<td class="text-capitalize"><?php echo ($user['fname']) ?></td>
 									<td class="text-capitalize"><?php echo ($user['lname']) ?></td>
-									<td><?php echo ($user['phone_No']) ?></td>
+									<td><?php echo '+255 ' . number_format($user['phone_No'], 0, '', ' ') ?></td>
 									<td><?php echo ($user['email']) ?></td>
 									<td><?php echo ($user['access_level']) ?></td>
 									<td class="text-center">
