@@ -1,77 +1,54 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-	<title>View Users</title>
-	<meta charset="utf-8">
-	<meta name="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/app.css">
-	<script src="bootstrap-4.3.1-dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
-	</script>
-	<script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
-	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('#example').DataTable();
-		});
-	</script>
-	<style>
-		body {
-			background-color: #f2f2f2;
-		}
-	</style>
-</head>
-
-<body class="container">
-	<center>
-		<div class="card-header text-center" id="header">
-			<h4>User Information</h4>
+<?php
+require('dbconnection.php');
+$sql = 'SELECT * FROM user';
+$users = $mysqli->query($sql);
+require('header.php');
+?>
+<div class="col-sm-12 form-group">
+	<div class="card form-group">
+		<div class="card-header"><span class="text-capitalize">System Users</span><span class="text-capitalize font-italic">&nbsp;list</span>
+			<a href="registration.php" class="btn btn-outline-success col-md-2 float-right">Add user</a>
 		</div>
-	</center>
-	<br><br>
-	<?php
-	$servername = 'localhost';
-	$username = 'root';
-	$password = '';
-	$dbname = 'emma';
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if (!$conn) {
-		die("connection failed :");
-		mysql_connect_error($conn);
-	}
-
-	$query = "SELECT * FROM user";
-	$result = mysqli_query($conn, $query);
-	if (mysqli_num_rows($result) > 0) {
-		echo '<table id="example" class="mb-7 display" style="width:90%">
-	        <thead>
-	            <tr>
-	            	<th>User ID</th>
-	            	<th>First Name</th>
-	            	<th>Last Name</th>
-	            	<th>Phone No.</th>
-	                <th>Email Address</th>
-	            </tr>
-	        </thead>';
-		while ($row = mysqli_fetch_assoc($result)) {
-			echo '
-				<tbody>
-					<tr>
-						<td>' . $row['Id'] . '</td>
-						<td>' . $row['fname'] . '</td>
-						<td>' . $row['lname'] . '</td>
-						<td>' . $row['phone_No'] . '</td>
-						<td>' . $row['email'] . '</td>
-					</tr>
-				</tbody>';
-		}
-		echo ('<table>');
-	} else { }
-	mysqli_close($conn);
-	?>
-</body>
-
-</html>
+		<div class="card-body form-group">
+			<div class="form-group">
+				<?php if ($users->num_rows < 1) {
+					?>
+					<h4 class="text-center">No User added yet</h4>
+				<?php
+				} else { ?>
+					<table class="table table-sm table-striped table-bordered" id="many">
+						<thead>
+							<tr>
+								<th>S.No</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Phone</th>
+								<th>Email</th>
+								<th>Access Level</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php $sno = 0;
+								while ($user = $users->fetch_assoc()) {
+									$sno++;
+									?>
+								<tr>
+									<td><?php echo ($sno) ?></td>
+									<td class="text-capitalize"><?php echo ($user['fname']) ?></td>
+									<td class="text-capitalize"><?php echo ($user['lname']) ?></td>
+									<td><?php echo ($user['phone_No']) ?></td>
+									<td><?php echo ($user['email']) ?></td>
+									<td><?php echo ($user['access_level']) ?></td>
+									<td class="text-center">
+										<a href="user_edit.php?id=<?php echo ($user['Id']) ?>" class="btn btn-sm btn-outline-info" onclick="return confirm('Edit this user?')"><i class="fa fa-edit"></i></a>
+										<a href="user_remove.php?id=<?php echo ($user['Id']) ?>&action=remove" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this user?')"><i class="fa fa-trash"></i></a>
+									</td>
+								</tr>
+							<?php  } ?>
+						</tbody>
+					</table> <?php } ?>
+			</div>
+		</div>
+	</div>
+	<?php require('footer.php');

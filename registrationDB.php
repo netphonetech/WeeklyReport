@@ -1,6 +1,7 @@
 <?php
 
 include('dbconnection.php');
+
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $phone = $_POST['phone'];
@@ -10,8 +11,8 @@ $password = sha1($_POST['password']);
 $sql = "INSERT INTO `user`(`fname`, `lname`, `phone_No`, `email`, `password`)VALUES ('" . $fname . "','" . $lname . "','" . $phone . "','" . $email . "','" . $password . "')";
 
 if ($mysqli->query($sql)) {
-	return header('location:login.php');
+	return header('location: viewUsers.php?message=User added successfully&type=success');
 } else {
-	return header('location: registration.php?error=something went wwrong, try again');
-	echo mysqli_error($conn);
+	return header('location: registration.php?message=something went wrong, try again&type=success');
+	echo mysqli_error($mysqli);
 }

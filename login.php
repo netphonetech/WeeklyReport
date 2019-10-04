@@ -38,9 +38,6 @@
 						</div>
 					</div>
 					<button class="btn btn-primary btn-sm col-md-4 offset-2" type="submit">Login</button><br>
-					<div class="col-md-12">
-						<i>First time here?<a href="registration.php">&emsp;create account</i></a>
-					</div>
 				</div>
 			</div>
 		</form>

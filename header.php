@@ -37,8 +37,12 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="logout.php">
-                    Logout</a></div>
+                <?php if ($user['access_level'] == 'admin') : ?>
+                    <a class="dropdown-item" href="viewUsers.php">Users</a>
+                <?php endif ?>
+                <hr>
+                <a class="dropdown-item" href="logout.php">Logout</a>
+            </div>
     </header>
     </div>
     <div class="col-md-12 form-group" style="background-color: whitesmoke">
