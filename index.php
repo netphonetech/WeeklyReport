@@ -1,6 +1,6 @@
 <?php
 require('dbconnection.php');
-$sql = 'SELECT * FROM reports,user WHERE reports.user=user.Id';
+$sql = 'SELECT reports.id,fname,lname,date_from,date_to,subject,reports.status,completed_this_week FROM reports,user WHERE reports.user=user.Id';
 $reports = $mysqli->query($sql);
 require('header.php');
 ?>
