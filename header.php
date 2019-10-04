@@ -39,8 +39,8 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <?php if ($user['access_level'] == 'admin') : ?>
                     <a class="dropdown-item" href="viewUsers.php">Users</a>
+                    <hr>
                 <?php endif ?>
-                <hr>
                 <a class="dropdown-item" href="logout.php">Logout</a>
             </div>
     </header>
